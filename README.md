@@ -4,19 +4,20 @@ An experiment looking at large-scale crosses between accessions of *A. thaliana*
 
 This README should serve as a quick overview of what we've done. See the [eLabJournal](https://vbc.elabjournal.com/members/experiments/?projectID=14726&studyID=45798) entry for this project has all the notes we made about the experimental procedure.
 
+The github repo is [here](https://github.com/ellisztamas/meth_pedigree), where you can also find an easier-to-read version of this readme file.
+
 ## Contents
 
-1. [Design](#design)
-	1. [Experimental design](#experimental-design)
-	2. [Analysis workflow](#analysis-workflow)
-3.  [Data](#data)
-	1. [Raw data](#raw-data)
-	2. [Derived data](#derived-data)
-4. [Dependencies](#Dependencies)
-5. [License](#license)
-6. [Author](#author)
-7. [Support](#support)
-8. [Acknowledgements](#acknowledgements)
+- [Design](#design)
+	- [What to cross](#what-to-cross)
+	- [Crosses and sowing](#crosses-and-sowing)
+- [Seeds and tissue](#seeds-and-tissue)
+- [Data](#data)
+	- [Pedigree file](#pedigree-file)
+	- [Sequencing data](#sequencing-data)
+- [Dependencies](#dependencies)
+- [Author information](#author-information)
+- [Acknowledgements](#acknowledgements)
 
 ## Design
 
@@ -104,13 +105,13 @@ To address issue 1, Almudena repeated the crosses, so there are two cohorts of c
 
 ### Additional tissue 
 
-There should be extra tissue for the parents, F1s, and four plates of the F2s in boxes in Tom's drawer of the -80°C freezer.
-Tom should update this - message him if he has forgotten.
+Extra tissue for the parents, F1s and S1s are in boxes in Tom's drawer (row 6, furthest drawer to the right) of -80°C freezer LA00'940'02A.
+There is also tissue for four plates of F2s/S2s from blocks 1-4 of cohort 1 somewhere, but this is not where I expected it to be (!)
 
 ### Seeds
 
-Seeds are in a box in the cold room.
-Tom should update this - message him if he has forgotten.
+F1, and S1 are in the cold in a box labelled 'Methylation pedigree crosses'.
+Right now, F2 seeds from cohort 1 are still in bags in the storage room next to the lab waiting to be cleaned.
 
 ## Data
 
@@ -122,6 +123,7 @@ This is documented in `pedigree.xlsx`, which has been periodically uploaded to [
 The file has two tabs, one listing every individual, and the other summarising families. They show:
 
 - `plantID`: A unique ID for each plant
+- `alternative`: For S1s only, and for the family tab, there are two naming systems; see below.
 - `mother`: ID of the mother.
 - `father`: ID of the father
 - `type`: Whether the plant is a parent, from a cross (F1, F2, F3) or selfed offspring of the parents (S1, S2, S3, ...)
