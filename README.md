@@ -8,6 +8,7 @@ The github repo is [here](https://github.com/ellisztamas/meth_pedigree), where y
 
 ## Contents
 
+- [Folder structure](#folder-structure)
 - [Design](#design)
 	- [What to cross](#what-to-cross)
 	- [Crosses and sowing](#crosses-and-sowing)
@@ -19,7 +20,7 @@ The github repo is [here](https://github.com/ellisztamas/meth_pedigree), where y
 - [Author information](#author-information)
 - [Acknowledgements](#acknowledgements)
 
-## About this folder
+## Folder structure
 
 Subsfolders are arranged in approximately the order you would need to deal with them:
 
