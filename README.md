@@ -19,13 +19,30 @@ The github repo is [here](https://github.com/ellisztamas/meth_pedigree), where y
 - [Author information](#author-information)
 - [Acknowledgements](#acknowledgements)
 
+## About this folder
+
+Subsfolders are arranged in approximately the order you would need to deal with them:
+
+- `01_raw_data`: soft links to the raw data, which are stored somewhere else
+- `02_library`: Directory to store library code, i.e. functions and generalisable scripts that
+you would run more than once that you want to apply to multiple datasets, but
+keep in one easy-to-maintain place.
+- `03_randomisation`: scripts and files related to randomising positions of plants across each experiment
+- `04_pedigree`: files related to tracking the family tree of each cross
+- `05_bisulphite_data`: Processing of bisulphite reads
+- `06_rna_seq`: Processing RNA seq reads
+
+See further readme files within each folder.
+
 ## Design
 
 We are interested in what happens when cross accessions with many TEs with accessions with few TEs. As a control, we would also cross high x high and low x low. To try and draw this:
 
+```
 High --- High
  |        |
 Low ---- Low
+```
 
 The idea is to follow methylation status from the parents, to at least the F3 generation. In parallel we also keep track of the selfed offspring of the parents at each generation (henceforth S1, S2, S3; where S stands for selfed).
 
@@ -106,7 +123,7 @@ To address issue 1, Almudena repeated the crosses, so there are two cohorts of c
 ### Additional tissue 
 
 Extra tissue for the parents, F1s and S1s are in boxes in Tom's drawer (row 6, furthest drawer to the right) of -80°C freezer LA00'940'02A.
-There is also tissue for four plates of F2s/S2s from blocks 1-4 of cohort 1 somewhere, but this is not where I expected it to be (!)
+There is also tissue for four plates of F2s/S2s from blocks 1-4 of cohort 1 in rack C6 (5th row from the bottom, middle row).
 
 ### Seeds
 
