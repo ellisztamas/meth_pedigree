@@ -1,6 +1,6 @@
 set.seed(8)
 
-lines <- read.csv("data_raw/F1_lines_to_grow.csv")
+lines <- read.csv("03_randomisation/F1_lines_to_grow.csv")
 
 ix <- lapply(1:6, function(x) sample(1:16, replace = F))
 ix <- do.call('c', ix)
