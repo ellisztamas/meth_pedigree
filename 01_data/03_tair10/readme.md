@@ -1,0 +1,1 @@
+Files relating to the the TAIR10 genome assembly.
