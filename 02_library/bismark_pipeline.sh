@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 usage () {
     cat <<HELP_USAGE
@@ -39,7 +39,7 @@ usage () {
         - sorted
             Aligned BAM files sorted by position
             Index files for those BAM files
-
+    
     To do:
       - If the sample name is a file name that ends with a suffix (eg .fastq.gz) 
         there can be a conflict between the output of bismark_deduplicate and 
@@ -67,7 +67,7 @@ HELP_USAGE
 }
 
 # Terminate the script automatically if any part of it fails (returns a non-zero exit status)
-set -e
+# set -e
 
 date
 echo ""
@@ -205,7 +205,7 @@ echo ""
 
 # Deduplicate BAM file
 mkdir -p $(dirname $sorted_by_name)
-echo Deduplicating the sorted BAM file and saving as $sample_name.deduplicated.bam
+echo Deduplicating the sorted BAM file and saving as $sample_name.sortedByName.deduplicated.bam
 
 deduplicate_bismark \
     --bam \
@@ -229,7 +229,7 @@ samtools sort \
     -@ $(nproc) \
     -o $sorted_by_pos \
     $bismark_dir/$sample_name.deduplicated.bam
-echo "Finished sorting. Indexing..."
+if [ $? -eq 0 ] ; then echo -n "Sorting completed. Indexing the sorted BAM file..." ; fi
 samtools index  $sorted_by_pos
 if [ $? -eq 0 ] ; then echo -n "Indexing completed." ; fi
 date

@@ -27,7 +27,7 @@ print("Using methlab version " + ml.__version__)
 # CSV giving the cross ID of every individual in the sample
 pedigree = pd.read_csv("03_processing/03_process_pedigree/output/pedigree_with_ancestry.csv")
 # CSV file giving the plate, row and column position of each individual
-ngs_sample_sheet = pd.read_csv("01_data/02_grow_plants/NGS_sample_sheet.csv", dtype=str)
+ngs_sample_sheet = pd.read_csv("01_data/06_raw_bisulphite_reads/NGS_sample_sheet.csv", dtype=str)
 # Directory containing raw reads.
 scratchdir="/scratch-cbe/users/" + os.getlogin() + "/meth_pedigree/04_align_reads/01_raw_bs_reads/"
 # scratchdir="/scratch-cbe/users/thomas.ellis/meth_pedigree/04_align_reads/01_raw_bs_reads/"
@@ -37,7 +37,8 @@ scratchdir="/scratch-cbe/users/" + os.getlogin() + "/meth_pedigree/04_align_read
 
 # Dictionary of paths to the directory for each plate.
 fastqdir = {
-    '2021-007' : scratchdir + '22H7YVLT3_3_R16762_20240222/demultiplexed/282462/'
+    '2021-007' : scratchdir + '22H7YVLT3_3_R16762_20240222/demultiplexed/282462/',
+    '2022-005' : scratchdir + '22HC53LT3_5_R16842_20240306/demultiplexed/280348/'
 }
 
 # List of unique sequencing-plate IDs for loop over
@@ -59,6 +60,8 @@ fastq_sheet = fastq_sheet.drop(['sample'], axis=1)
 # Merge file paths with plantIDs and pedigree
 sample_sheet = pd.merge(ngs_sample_sheet, fastq_sheet, how='right', on=['plate', 'row', 'col'])
 sample_sheet = pd.merge(sample_sheet, pedigree, how = 'left', on = "plantID")
+# Explicitly add blank samples as belonging to a blank crossID
+sample_sheet.loc[sample_sheet['crossID'].isna(), 'crossID'] = "blank"
 
 # Add paths to the genomes to map to.
 
@@ -88,6 +91,9 @@ genomes = {
     '8249x1158' : genome_dir + '1158x8249/1158x8249.fa',
     '6184x6024' : genome_dir + '6184x6024/6184x6024.fa',
     '6024x6184' : genome_dir + '6184x6024/6184x6024.fa',
+    # Blank and controls
+    'blank' : '03_processing/01_prepare_genomes/tair10/TAIR10_plus_vectors.fa',
+    'Col0'  : '03_processing/01_prepare_genomes/tair10/TAIR10_plus_vectors.fa'
 }
 # Genomes for each individual
 sample_sheet['genome'] = [ genomes[x] for x in sample_sheet['crossID'] ]

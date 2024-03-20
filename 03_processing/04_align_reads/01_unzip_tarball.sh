@@ -16,7 +16,7 @@
 #SBATCH --mem=20GB
 #SBATCH --qos=short
 #SBATCH --time=4:00:00
-#SBATCH --array=0
+#SBATCH --array=1
 
 # Define working directory and load the conda environment
 source setup.sh

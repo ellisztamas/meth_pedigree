@@ -29,6 +29,7 @@ source setup.sh
 
 # source directories containing parental and vector genomes
 parents_dir=01_data/04_parental_genomes
+tair10_dir=01_data/03_tair10
 vector_dir=01_data/07_vector_DNA
 
 # 1158x6184
@@ -40,8 +41,8 @@ cat $parents_dir/1158_v1.1.fasta \
     $vector_dir/pUC19.fasta \
     $vector_dir/lambda_vector.fasta \
     $vector_dir/phiX.fasta \
-    $parents_dir/TAIR10_chrC.fas \
-    $parents_dir/TAIR10_chrM.fas > \
+    $tair10_dir/TAIR10_chrC.fas \
+    $tair10_dir/TAIR10_chrM.fas > \
     $outdir/1158x6184.fa
 # Bisulphite convert the genome
 bismark_genome_preparation $outdir
@@ -70,8 +71,8 @@ cat $parents_dir/1158_v1.1.fasta \
     $vector_dir/pUC19.fasta \
     $vector_dir/lambda_vector.fasta \
     $vector_dir/phiX.fasta \
-    $parents_dir/TAIR10_chrC.fas \
-    $parents_dir/TAIR10_chrM.fas > \
+    $tair10_dir/TAIR10_chrC.fas \
+    $tair10_dir/TAIR10_chrM.fas > \
     $outdir/1158x8249.fa
 # Bisulphite convert the genome
 bismark_genome_preparation $outdir
@@ -103,8 +104,8 @@ cat $parents_dir/8249_v1.1.fasta \
     $vector_dir/pUC19.fasta \
     $vector_dir/lambda_vector.fasta \
     $vector_dir/phiX.fasta \
-    $parents_dir/TAIR10_chrC.fas \
-    $parents_dir/TAIR10_chrM.fas > \
+    $tair10_dir/TAIR10_chrC.fas \
+    $tair10_dir/TAIR10_chrM.fas > \
     $outdir/8249x6184.fa
 # Bisulphite convert the genome
 bismark_genome_preparation $outdir

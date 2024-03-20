@@ -26,12 +26,12 @@
 #SBATCH --job-name=bismark_pipeline
 #SBATCH --output=slurm/%x-%a.out
 #SBATCH --error=slurm/%x-%a.err
-#SBATCH --time=1-00:00
+#SBATCH --time=1-00:00:00
 #SBATCH -N 1
 #SBATCH --cpus-per-task=5
-#SBATCH --mem-per-cpu=10G
+#SBATCH --mem-per-cpu=5G
 #SBATCH --qos=medium
-#SBATCH --array=1-96
+#SBATCH --array=1-10#96
 
 # Set up working directory and load conda evironment
 source setup.sh
@@ -68,8 +68,10 @@ genome_col=$(cut -d',' -f 4 $sample_sheet)
 genome_col=($genome_col)
 genome=${genome_col[$SLURM_ARRAY_TASK_ID]}
 
+echo $plantID
+
 # Run the pipeline
-02_library/bismark_pipeline_copy.sh \
+02_library/bismark_pipeline.sh \
     --sample $plantID \
     --read1  $read1 \
     --read2  $read2 \
