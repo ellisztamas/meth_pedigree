@@ -66,6 +66,11 @@ The reason for picking these accessions were that (at the time in 2019 at least)
 - They have similar flowering times
 - Except for DDM1, these crosses do not segregate at any of the major-effect genome-wide loci (NRPE1, MIR823A, various CMT2 alleles identifed by Eriko, CMT3, MET1); we wanted these to not be segregating so that we would have better power to look for smaller-effect loci and changes in epigenetic inheritance.
 - There is no evidence for residual heterozygosity
+- HiFi PacBio sequencing is being done using pooled tissue from seeds from four parental plants, with the following IDs (see the pedigree file):
+	- 1158_2
+	- 6184_2
+	- 6024_2
+	- 8249_4
 
 ### Crosses and sowing
 

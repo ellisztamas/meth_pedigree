@@ -14,3 +14,5 @@ be in 03_processing with the code to generate them.
     https://docs.google.com/spreadsheets/d/1XjO8zabj-1vlu-ex37MRnsnXB_c1U3_k-uXoeKaeGn0/edit#gid=26733257
 07_vector_DNA: Fasta files for the extra vectors used in library preparation
     (phiX, lambda phage, pUC19)
+08_1001genomes: Files from the 1001 genomes project, including database files 
+    for running SNPmatch using TAIR10 coordinates.
