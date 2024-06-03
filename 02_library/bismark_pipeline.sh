@@ -256,11 +256,11 @@ mkdir -p $outdir/logs
 cp $bismark_dir/*.deduplication_report.txt $outdir/logs
 cp $bismark_dir/*_val_1_bismark_bt2_PE_report.txt $outdir/logs
 
-mkdir -p $outdir/reports
-cp $bismark_dir/reports/*.CX_report.txt.gz $outdir/reports
-mv $outdir/reports/$sample_name.deduplicated.CX_report.txt.gz $outdir/reports/$sample_name.CX_report.txt.gz
+mkdir -p $outdir/cx_reports
+cp $bismark_dir/reports/*.CX_report.txt.gz $outdir/cx_reports
+mv $outdir/reports/$sample_name.deduplicated.CX_report.txt.gz $outdir/cx_reports/$sample_name.CX_report.txt.gz
 
-mkdir -p $outdir/sorted
-cp $bismark_dir/$sample_name.sortedByPos.bam $outdir/sorted
-cp $bismark_dir/$sample_name.sortedByPos.bam.bai $outdir/sorted
+mkdir -p $outdir/aligned_bams
+cp $bismark_dir/$sample_name.sortedByPos.bam $outdir/aligned_bams
+cp $bismark_dir/$sample_name.sortedByPos.bam.bai $outdir/aligned_bams
 echo "Finished copying."
