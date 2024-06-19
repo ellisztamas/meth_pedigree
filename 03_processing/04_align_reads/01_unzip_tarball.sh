@@ -13,10 +13,10 @@
 #SBATCH --job-name=unzip_raw_reads
 #SBATCH --output=slurm/%x-%a.out
 #SBATCH --error=slurm/%x-%a.err
-#SBATCH --mem=20GB
+#SBATCH --mem=2GB
 #SBATCH --qos=short
 #SBATCH --time=4:00:00
-#SBATCH --array=1
+#SBATCH --array=0-10
 
 # Define working directory and load the conda environment
 source setup.sh
@@ -27,14 +27,15 @@ zipfile_array=(01_data/06_raw_bisulphite_reads/**/*.tar.gz)
 zipfile=${zipfile_array[$SLURM_ARRAY_TASK_ID]}
 
 # Define a directory to stored upzipped files
-scratchdir=$workdir/04_align_reads/01_raw_bs_reads
+# scratchdir=$workdir/04_align_reads/01_raw_bs_reads
+scratchdir=temp_unzip
 mkdir -p $scratchdir
 # Directory to copy the QC output
-projdir=03_processing/04_align_reads/output
+projdir=03_processing/04_align_reads/output/multiqc_raw_reads
 mkdir -p $projdir
 
 # Unzip raw data
 tar -xvC $scratchdir -f $zipfile
 
 # copy the multiqc report to the project folder
-cp -r $scratchdir/22H7YVLT3_3_R16762_20240222/qc/*_multiqc_report.html $projdir
+cp -r $scratchdir/$(basename -s.tar.gz $zipfile)/qc/*_multiqc_report.html $projdir
