@@ -16,7 +16,7 @@
 #SBATCH --mem=2GB
 #SBATCH --qos=short
 #SBATCH --time=4:00:00
-#SBATCH --array=0-10
+#SBATCH --array=0-18
 
 # Define working directory and load the conda environment
 source setup.sh
@@ -27,11 +27,11 @@ zipfile_array=(01_data/06_raw_bisulphite_reads/**/*.tar.gz)
 zipfile=${zipfile_array[$SLURM_ARRAY_TASK_ID]}
 
 # Define a directory to stored upzipped files
-# scratchdir=$workdir/04_align_reads/01_raw_bs_reads
-scratchdir=temp_unzip
+scratchdir=$workdir/04_validate_samples/01_raw_bs_reads
+# scratchdir=temp_unzip
 mkdir -p $scratchdir
 # Directory to copy the QC output
-projdir=03_processing/04_align_reads/output/multiqc_raw_reads
+projdir=03_processing/04_validate_samples/output/multiqc_raw_reads
 mkdir -p $projdir
 
 # Unzip raw data

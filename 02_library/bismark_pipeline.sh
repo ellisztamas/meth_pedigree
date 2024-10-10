@@ -235,20 +235,20 @@ if [ $? -eq 0 ] ; then echo -n "Indexing completed." ; fi
 date
 echo ""
 
-# extract methylation calls
-echo "Running bismark_methylation_extractor, and saving to:"
-echo $bismark_dir/cx_reports
-genome_folder=$(dirname $genome)
+# # extract methylation calls
+# echo "Running bismark_methylation_extractor, and saving to:"
+# echo $bismark_dir/cx_reports
+# genome_folder=$(dirname $genome)
 
-bismark_methylation_extractor \
-    --paired-end \
-    --genome_folder $(realpath $genome_folder) \
-    ${methylation_extractor_args} \
-    --output_dir $bismark_dir/cx_reports \
-    $bismark_dir/$sample_name.deduplicated.bam
-if [ $? -eq 0 ] ; then echo -n "Methylation calls completed." ; fi
-date
-echo ""
+# bismark_methylation_extractor \
+#     --paired-end \
+#     --genome_folder $(realpath $genome_folder) \
+#     ${methylation_extractor_args} \
+#     --output_dir $bismark_dir/cx_reports \
+#     $bismark_dir/$sample_name.deduplicated.bam
+# if [ $? -eq 0 ] ; then echo -n "Methylation calls completed." ; fi
+# date
+# echo ""
 
 # Stage out the files to keep
 echo "Copying files to the output directory."
@@ -256,9 +256,9 @@ mkdir -p $outdir/logs
 cp $bismark_dir/*.deduplication_report.txt $outdir/logs
 cp $bismark_dir/*_val_1_bismark_bt2_PE_report.txt $outdir/logs
 
-mkdir -p $outdir/cx_reports
-cp $bismark_dir/cx_reports/*.CX_report.txt.gz $outdir/cx_reports
-mv $outdir/cx_reports/$sample_name.deduplicated.CX_report.txt.gz $outdir/cx_reports/$sample_name.CX_report.txt.gz
+# mkdir -p $outdir/cx_reports
+# cp $bismark_dir/cx_reports/*.CX_report.txt.gz $outdir/cx_reports
+# mv $outdir/cx_reports/$sample_name.deduplicated.CX_report.txt.gz $outdir/cx_reports/$sample_name.CX_report.txt.gz
 
 mkdir -p $outdir/aligned_bams
 cp $bismark_dir/$sample_name.sortedByPos.bam $outdir/aligned_bams

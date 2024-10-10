@@ -15,7 +15,7 @@
 #SBATCH --mem=1GB
 #SBATCH --qos=rapid
 #SBATCH --time=5:00
-#SBATCH --array=96-191
+#SBATCH --array=0-191
 
 
 # Define working directory and load the conda environment
@@ -24,14 +24,14 @@ i=${SLURM_ARRAY_TASK_ID}
 # === Input paths ====
 
 # Path to fastq files for the initial run 
-indir=($workdir/04_align_reads/01_raw_bs_reads/22H7YVLT3_3_R16762_20240222/demultiplexed/282462/*_R{1,2}_*)
+indir=($workdir/04_validate_samples/01_raw_bs_reads/22H7YVLT3_3_R16762_20240222/demultiplexed/282462/*_R{1,2}_*)
 # Path to the first file of the pair.
 file1=${indir[$i]}
 echo "Path to the first file of the pair:\n ${file1}\n"
 
 # === Output paths ====
 
-outdir=$workdir/04_align_reads/02_merge_fastq
+outdir=$workdir/04_validate_samples/02_merge_fastq
 mkdir -p $outdir
 
 # === Script ===
