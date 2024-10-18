@@ -17,14 +17,13 @@
 #SBATCH --job-name=ibdpainting
 #SBATCH --output=slurm/%x-%a.out
 #SBATCH --error=slurm/%x-%a.err
-#SBATCH --mem=10GB
+#SBATCH --mem=2GB
 #SBATCH --qos=short
-#SBATCH --time=8:00:00
-#SBATCH --array=5-97
+#SBATCH --time=2:00:00
+#SBATCH --array=1058-1153
 
 # Load the conda environment
 source setup.sh
-# set -e
 
 # === Input files === #
 

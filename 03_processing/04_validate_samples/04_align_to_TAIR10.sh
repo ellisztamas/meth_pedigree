@@ -31,7 +31,7 @@
 #SBATCH -N 1
 #SBATCH --cpus-per-task=5
 #SBATCH --mem-per-cpu=10G
-#SBATCH --array=962-1729
+#SBATCH --array=1058-1153
 
 # Set up working directory and load conda evironment
 source setup.sh
