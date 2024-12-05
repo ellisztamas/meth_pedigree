@@ -1,0 +1,229 @@
+---
+title: "Compare scaffolds of assembled genomes to TAIR10"
+author: "Tom Ellis"
+date: "`r Sys.Date()`"
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+    number_sections: false
+    theme: lumen
+  toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse, quietly = TRUE)
+library(pafr, quietly=TRUE)
+```
+
+## 1158
+
+### Dotplots
+
+* For this and all other assemblies, there is a ton of unscaffolded contigs on the RHS of 10-100kb. These are mostly chloroplast sequences, with some rDNA and mitochondia in there.
+* Chr1 consistently splits over three contigs
+* Long arm pof Chr2 splits. Short arms are not assembled well. 1002 picks up the rDNA stuff, but can't assemble it.
+
+```{r dotplots-1158}
+# List of files for this accession
+paf_files_1158 <- Sys.glob(
+  "03_processing/05_genome_assembly/output/03_scaffolding/1158/*/ragtag.scaffold.asm.paf"
+)
+# Reorder to a more logical order
+paf_files_1158 <- paf_files_1158[c(5,6,3,4,1,2)]
+# Labels for each plot
+y_labels <- c("TAIR10 (hard-masked)", "TAIR12", "Col-0 from Naish (2021)", "CLR assembly", "1002 Hifi assembly", "8334 HiFi assembly")
+
+# Plot dotplots for each scaffolded assembly.
+# It seems that the dotplot function doesn't work in side a loop, so 
+# we need to write each command boiler-plate style
+dotplot(
+  read_paf(paf_files_1158[1]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[1]
+)
+
+dotplot(
+  read_paf(paf_files_1158[2]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[2]
+)
+
+dotplot(
+  read_paf(paf_files_1158[3]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[3]
+)
+
+dotplot(
+  read_paf(paf_files_1158[4]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[4]
+)
+
+dotplot(
+  read_paf(paf_files_1158[5]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[5]
+)
+
+dotplot(
+  read_paf(paf_files_1158[6]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[6]
+)
+```
+
+## 6024
+
+* Something is wrong with Chrs 2 and 3.
+  * There is one big contig which shows homology with both chromosomes, but it seems to have been assigned as Chr3.
+  * That means chr2 is really small.
+
+### Dotplots
+
+```{r dotplots-6024}
+# List of files for this accession
+paf_files_6024 <- Sys.glob(
+  "03_processing/05_genome_assembly/output/03_scaffolding/6024/*/ragtag.scaffold.asm.paf"
+)
+# Reorder to a more logical order
+paf_files_6024 <- paf_files_6024[c(5,6,3,4,1,2)]
+# Labels for each plot
+y_labels <- c("TAIR10 (hard-masked)", "TAIR12", "Col-0 from Naish (2021)", "CLR assembly", "1002 Hifi assembly", "8334 HiFi assembly")
+
+# Plot dotplots for each scaffolded assembly.
+# It seems that the dotplot function doesn't work in side a loop, so 
+# we need to write each command boiler-plate style
+dotplot(
+  read_paf(paf_files_6024[1]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6024 HiFi assembly", ylab = y_labels[1]
+)
+
+dotplot(
+  read_paf(paf_files_6024[2]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6024 HiFi assembly", ylab = y_labels[2]
+)
+
+dotplot(
+  read_paf(paf_files_6024[3]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6024 HiFi assembly", ylab = y_labels[3]
+)
+
+dotplot(
+  read_paf(paf_files_6024[4]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6024 HiFi assembly", ylab = y_labels[4]
+)
+
+dotplot(
+  read_paf(paf_files_6024[5]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6024 HiFi assembly", ylab = y_labels[5]
+)
+
+dotplot(
+  read_paf(paf_files_6024[6]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6024 HiFi assembly", ylab = y_labels[6]
+)
+```
+
+## 6184
+
+### Dotplots
+
+* Small chunk at the start of Chr1 consistently forms its own contig
+* Short arm of Chr4 forms a contig, then theres a load of rDNA stuff
+  * TAIR12 finds the most, but cannot assemble
+* Chr2 breaks close the centromere. That's dfferent from 1158
+
+
+```{r dotplots-6184}
+# List of files for this accession
+paf_files_6184 <- Sys.glob(
+  "03_processing/05_genome_assembly/output/03_scaffolding/6184/*/ragtag.scaffold.asm.paf"
+)
+# Reorder to a more logical order
+paf_files_6184 <- paf_files_6184[c(5,6,3,4,1,2)]
+# Labels for each plot
+y_labels <- c("TAIR10 (hard-masked)", "TAIR12", "Col-0 from Naish (2021)", "CLR assembly", "1002 Hifi assembly", "8334 HiFi assembly")
+
+# Plot dotplots for each scaffolded assembly.
+# It seems that the dotplot function doesn't work in side a loop, so 
+# we need to write each command boiler-plate style
+dotplot(
+  read_paf(paf_files_6184[1]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6184 HiFi assembly", ylab = y_labels[1]
+)
+
+dotplot(
+  read_paf(paf_files_6184[2]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6184 HiFi assembly", ylab = y_labels[2]
+)
+
+dotplot(
+  read_paf(paf_files_6184[3]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6184 HiFi assembly", ylab = y_labels[3]
+)
+
+dotplot(
+  read_paf(paf_files_6184[4]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6184 HiFi assembly", ylab = y_labels[4]
+)
+
+dotplot(
+  read_paf(paf_files_6184[5]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6184 HiFi assembly", ylab = y_labels[5]
+)
+
+dotplot(
+  read_paf(paf_files_6184[6]), label_seqs = TRUE, order_by='qstart',
+  xlab = "6184 HiFi assembly", ylab = y_labels[6]
+)
+```
+  
+## 8249
+
+### Dotplots
+
+* These all look awful.
+
+```{r dotplots-8249}
+# List of files for this accession
+paf_files_8249 <- Sys.glob(
+  "03_processing/05_genome_assembly/output/03_scaffolding/8249/*/ragtag.scaffold.asm.paf"
+)
+# Reorder to a more logical order
+paf_files_8249 <- paf_files_8249[c(5,6,3,4,1,2)]
+# Labels for each plot
+y_labels <- c("TAIR10 (hard-masked)", "TAIR12", "Col-0 from Naish (2021)", "CLR assembly", "1002 Hifi assembly", "8334 HiFi assembly")
+
+# Plot dotplots for each scaffolded assembly.
+# It seems that the dotplot function doesn't work in side a loop, so 
+# we need to write each command boiler-plate style
+dotplot(
+  read_paf(paf_files_8249[1]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[1]
+)
+
+dotplot(
+  read_paf(paf_files_8249[2]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[2]
+)
+
+dotplot(
+  read_paf(paf_files_8249[3]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[3]
+)
+
+dotplot(
+  read_paf(paf_files_8249[4]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[4]
+)
+
+dotplot(
+  read_paf(paf_files_8249[5]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[5]
+)
+
+dotplot(
+  read_paf(paf_files_8249[6]), label_seqs = TRUE, order_by='qstart',
+  xlab = "1158 HiFi assembly", ylab = y_labels[6]
+)
+```
+  
