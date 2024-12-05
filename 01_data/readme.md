@@ -16,3 +16,8 @@ be in 03_processing with the code to generate them.
     (phiX, lambda phage, pUC19)
 08_1001genomes: Files from the 1001 genomes project, including database files 
     for running SNPmatch using TAIR10 coordinates.
+09_pacbio_reads: Raw PacBio HiFi reads for the parental accessions.
+10_Col-CEN: Data for telomere to telomere assembly of Columbia from
+    Naish et al. Science374,eabi7489(2021).DOI:10.1126/science.abi7489
+    To clone:
+    git clone https://github.com/schatzlab/Col-CEN.git
