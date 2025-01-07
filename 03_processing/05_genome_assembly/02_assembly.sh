@@ -21,8 +21,8 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=38
 #SBATCH --mem-per-cpu=4G
-#SBATCH --time=2-00:00:00
-#SBATCH --array=2-3
+#SBATCH --time=1-00:00:00
+#SBATCH --array=0-3
 
 set -e
 
@@ -38,8 +38,7 @@ accession_array=(1158 6184 8249 6024)
 accession_name=${accession_array[$i]}
 
 # Input raw fastq file
-raw_read_array=($workdir/05_genome_assembly/01_raw_data/${accession_name}.fastq.gz)
-input_raw_reads=${raw_read_array[$i]}
+input_raw_reads=$workdir/05_genome_assembly/01_raw_data/${accession_name}.fastq.gz
 echo "Processing reads from input file: ${raw_bam}"
 
 

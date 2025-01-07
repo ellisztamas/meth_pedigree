@@ -16,11 +16,9 @@
 #SBATCH --job-name=merqury
 #SBATCH --output=slurm/%x-%a.out
 #SBATCH --error=slurm/%x-%a.err
-#SBATCH --qos=short
-#SBATCH --time=8:00:00
-#SBATCH --ntasks=20
-#SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=5G
+#SBATCH --qos=rapid
+#SBATCH --time=1:00:00
+#SBATCH --mem=10G
 #SBATCH --array=0-3
 
 # set -e
@@ -37,9 +35,8 @@ accession_array=(1158 6184 8249 6024)
 accession_name=${accession_array[$i]}
 
 # Input raw fastq file
-raw_read_array=($workdir/05_genome_assembly/01_raw_data/${accession_name}.fastq.gz)
-input_raw_reads=${raw_read_array[$i]}
-echo "Processing reads from input file: ${raw_bam}"
+input_raw_reads=$workdir/05_genome_assembly/01_raw_data/${accession_name}.fastq.gz
+echo "Processing reads from input file: ${input_raw_reads}"
 
 # FASTA file containing contigs for the autosomes
 scaffolded_assembly=${workdir}/05_genome_assembly/03_scaffolding/${accession_name}/8334/${accession_name}_scaffolded_contigs.fasta
@@ -55,9 +52,11 @@ mkdir -p $outdir
 meryldb=$outdir/${accession_name}.meryl
 
 # Prefix for the Merqury output
-output_prefix=merqury_output
+output_prefix=$accession_name
 
 # === Script === #
+
+cd $outdir
 
 # Create a k-mer library for mapping
 echo -n "Creating k-mer library..."
@@ -68,14 +67,10 @@ echo "finished in $((duration / 60)) minutes and $((duration % 60)) seconds."
 
 # Run Merqury
 echo -n "Analysing the genome with Merqury..."
-cd $outdir
 SECONDS=0
 $MERQURY/merqury.sh \
     $meryldb \
     $scaffolded_assembly \
-    /users/thomas.ellis/epiclines/002.pedigree/01_data/03_tair10/TAIR12.fa \
-    /users/thomas.ellis/epiclines/002.pedigree/01_data/03_tair10/TAIR10.hard_masked.fa \
-    /users/thomas.ellis/epiclines/002.pedigree/01_data/04_parental_genomes/8334.fa \
     $output_prefix
 duration=$SECONDS
 echo "finished in $((duration / 60)) minutes and $((duration % 60)) seconds."

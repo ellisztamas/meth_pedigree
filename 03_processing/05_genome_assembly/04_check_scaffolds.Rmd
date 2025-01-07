@@ -123,6 +123,28 @@ dotplot(
 )
 ```
 
+
+### Manual curation of the contigs
+
+```{r}
+# List of files for this accession
+rescaffold_6024 <- "03_processing/05_genome_assembly/output/11_fix_6024/ragtag.scaffold.asm.paf"
+
+# Plot dotplots for each scaffolded assembly.
+# It seems that the dotplot function doesn't work in side a loop, so 
+# we need to write each command boiler-plate style
+dotplot(
+  read_paf(rescaffold_6024), label_seqs = TRUE, order_by='qstart',
+  xlab = "6024 HiFi assembly", ylab = '8334'
+)
+
+x <- read_paf(rescaffold_6024)
+
+tibble(qname=x$qname, tname=x$tname, qstart=x$qstart, qend=x$qend) %>% 
+  filter(grepl("002l", qname)) %>%  View()
+```
+
+
 ## 6184
 
 ### Dotplots

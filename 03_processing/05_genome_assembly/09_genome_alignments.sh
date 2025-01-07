@@ -60,6 +60,6 @@ cp $tair10 $data_dir
 pannagram \
     -path_in $data_dir \
     -path_out $outdir \
+    -ref TAIR10_chr_all \
     -cores ${SLURM_CPUS_PER_TASK} \
-    -nchr 5 \
-    -pre
+    -nchr 5
